@@ -644,7 +644,9 @@ reasons: 'Aankhon Se Batana.m4a.mp4',
 
 shayari: 'Arz kya hai.mp4',
 
-proposal: 'I Love You - Pritam, Ash King, Clinton Cerejo (1).m4a'
+/* CORRECTED SONG FILE NAME */
+
+proposal: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a'
 
 };
 
@@ -690,6 +692,11 @@ function playSectionSong(section){
   // Don't restart if the same song is already playing.
 
   if(currentSong === file && music.src){
+    if(music.paused){
+      music.play().catch(error=>{
+        console.log('Music playback error:',error);
+      });
+    }
     return;
   }
 
@@ -713,8 +720,6 @@ function playSectionSong(section){
 
 function goTo(id){
 
-  const previous = document.querySelector('.scene.active');
-
   stopVideos();
 
   document.querySelectorAll('.scene').forEach(scene=>{
@@ -728,7 +733,7 @@ function goTo(id){
   playSectionSong(id);
 
   // Hug video starts when its scene opens.
-  // The background song continues underneath.
+  // Background song continues underneath.
 
   if(id === 'hug'){
 
@@ -752,7 +757,9 @@ document.addEventListener('pointerdown',()=>{
     return;
   }
 
-  music.play().catch(()=>{});
+  music.play().catch(error=>{
+    console.log('Music playback error:',error);
+  });
 
 },{passive:true});
 
