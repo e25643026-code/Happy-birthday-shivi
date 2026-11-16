@@ -13,7 +13,7 @@
 
 body{
   margin:0;
-  background:#080b17 url("Screenshot_20261116_194531_Video Player.jpg")
+  background:#080b17 url("Screenshot_20261116_200334_CapCut.jpg")
   center center / cover fixed no-repeat;
   color:white;
   font-family:Poppins,sans-serif;
@@ -399,7 +399,6 @@ Open your surprise ❤️
 
 </section>
 
-
 <!-- LETTER -->
 
 <section class="scene" id="letter">
@@ -438,7 +437,6 @@ Continue to our memories 💗
 
 </section>
 
-
 <!-- MEMORIES -->
 
 <section class="scene" id="memories">
@@ -460,7 +458,6 @@ Next surprise 🫙
 </button>
 
 </section>
-
 
 <!-- REASONS -->
 
@@ -507,7 +504,6 @@ Continue 💙
 
 </section>
 
-
 <!-- SHAYARI -->
 
 <section class="scene" id="shayari">
@@ -530,7 +526,6 @@ One more question... 💍
 </button>
 
 </section>
-
 
 <!-- PROPOSAL -->
 
@@ -560,7 +555,6 @@ NO 🙄
 
 </section>
 
-
 <!-- HUG -->
 
 <section class="scene" id="hug">
@@ -583,7 +577,6 @@ I have another gift 🎁
 
 </section>
 
-
 <!-- PAJAMA -->
 
 <section class="scene" id="pajama">
@@ -605,7 +598,6 @@ Last surprise 🕸️
 </button>
 
 </section>
-
 
 <!-- FINAL -->
 
@@ -636,36 +628,33 @@ Will u be my spiderman for the rest of my life...you mean everything to me baby.
 
 </section>
 
-
 <script>
 
 const music = document.getElementById('music');
 
-
-/* UPDATED SONGS */
+/* SONG FILES */
 
 const songs = {
 
 letter: 'Sab Tera   Shraddha Kapoor   Armaan Malik.mp3',
 
-memories: 'Tum Se Hi - Mohit Chauhan.mp3',
+memories: 'Tum Se Hi   Mohit Chauhan.mp3',
 
 reasons: 'Aankhon Se Batana.m4a.mp4',
 
 shayari: 'Arz kya hai.mp4',
 
-proposal: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a',
-
-pajama: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a'
+proposal: 'I Love You - Pritam, Ash King, Clinton Cerejo (1).m4a'
 
 };
 
+/* PROPOSAL THROUGH FINAL = ONE CONTINUOUS SONG */
 
-function stopAllMedia(){
+const proposalJourney = ['proposal','hug','pajama','final'];
 
-  music.pause();
-  music.removeAttribute('src');
-  music.load();
+let currentSong = '';
+
+function stopVideos(){
 
   document.querySelectorAll('.scene video').forEach(video=>{
     video.pause();
@@ -674,35 +663,62 @@ function stopAllMedia(){
 
 }
 
-
 function playSectionSong(section){
 
-  const file=songs[section];
+  // Keep the same song playing without restarting
+  // while moving from proposal to the final section.
+
+  if(proposalJourney.includes(section) &&
+     currentSong === songs.proposal &&
+     music.src){
+
+    return;
+  }
+
+  const file = songs[section];
+
+  if(!file){
+
+    music.pause();
+    music.removeAttribute('src');
+    music.load();
+    currentSong = '';
+    return;
+
+  }
+
+  // Don't restart if the same song is already playing.
+
+  if(currentSong === file && music.src){
+    return;
+  }
 
   music.pause();
-  music.removeAttribute('src');
+  music.src = file;
   music.load();
 
-  if(!file)return;
+  currentSong = file;
 
-  music.src=file;
-  music.load();
-
-  const attempt=music.play();
+  const attempt = music.play();
 
   if(attempt && attempt.catch){
-    attempt.catch(()=>{});
+    attempt.catch(error=>{
+      console.log('Music playback waiting for user interaction:',error);
+    });
   }
 
 }
 
+/* NAVIGATION */
 
 function goTo(id){
 
-  stopAllMedia();
+  const previous = document.querySelector('.scene.active');
 
-  document.querySelectorAll('.scene').forEach(s=>{
-    s.classList.remove('active');
+  stopVideos();
+
+  document.querySelectorAll('.scene').forEach(scene=>{
+    scene.classList.remove('active');
   });
 
   document.getElementById(id).classList.add('active');
@@ -711,17 +727,34 @@ function goTo(id){
 
   playSectionSong(id);
 
-  if(id==='hug'){
+  // Hug video starts when its scene opens.
+  // The background song continues underneath.
 
-    const video=document.getElementById('hugVideo');
+  if(id === 'hug'){
 
-    video.currentTime=0;
+    const video = document.getElementById('hugVideo');
+
+    video.currentTime = 0;
+
     video.play().catch(()=>{});
 
   }
 
 }
 
+/* AUTOPLAY FALLBACK */
+
+document.addEventListener('pointerdown',()=>{
+
+  const activeScene = document.querySelector('.scene.active');
+
+  if(!activeScene || !currentSong || !music.paused){
+    return;
+  }
+
+  music.play().catch(()=>{});
+
+},{passive:true});
 
 /* LETTER */
 
@@ -735,8 +768,7 @@ function openLetter(){
 
 }
 
-
-/* 19 REASONS WITH CUTE EMOJIS */
+/* 19 REASONS */
 
 const reasons=[
 
@@ -780,10 +812,8 @@ const reasons=[
 
 ];
 
-
 let remaining=[...reasons];
 let opened=0;
-
 
 function pickReason(){
 
@@ -815,7 +845,6 @@ function pickReason(){
     ],{duration:650,iterations:2});
 
   });
-
 
   setTimeout(()=>{
 
@@ -854,7 +883,6 @@ function pickReason(){
 
 }
 
-
 /* YES BUTTON */
 
 function sayYes(){
@@ -866,8 +894,7 @@ function sayYes(){
 
 }
 
-
-/* NO BUTTON - FUNNY MESSAGE + SHIFTING */
+/* NO BUTTON */
 
 function sayNo(){
 
@@ -885,7 +912,6 @@ function sayNo(){
 
 }
 
-
 /* FINAL HEART REVEAL */
 
 function revealFinal(){
@@ -897,7 +923,6 @@ function revealFinal(){
   document.getElementById('finalReveal').classList.add('show');
 
 }
-
 
 /* FLOATING HEARTS */
 
