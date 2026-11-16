@@ -10,116 +10,254 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 *{box-sizing:border-box}
+
 body{
-  margin:0;background:#080b17;color:white;
-  font-family:Poppins,sans-serif;overflow-x:hidden;
+  margin:0;
+  background:#080b17 url("Screenshot_20261116_194531_Video Player.jpg")
+  center center / cover fixed no-repeat;
+  color:white;
+  font-family:Poppins,sans-serif;
+  overflow-x:hidden;
 }
+
 .scene{
-  display:none;min-height:100vh;padding:35px 16px;
-  align-items:center;justify-content:center;flex-direction:column;
-  text-align:center;position:relative;overflow:hidden;
+  display:none;
+  min-height:100vh;
+  padding:35px 16px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:rgba(5,7,18,.70);
+  backdrop-filter:blur(1px);
 }
+
 .scene.active{display:flex}
+
 h1,h2{
   font-family:Pacifico,cursive;
   text-shadow:0 0 12px #ff4b9b,0 0 25px #168cff;
 }
+
 h1{font-size:clamp(2.2rem,8vw,4rem)}
 h2{font-size:clamp(1.7rem,6vw,2.7rem)}
+
 p{line-height:1.9}
+
 button{
-  border:0;border-radius:35px;padding:14px 25px;margin:12px;
-  color:white;font-weight:700;font-family:inherit;font-size:1rem;
+  border:0;
+  border-radius:35px;
+  padding:14px 25px;
+  margin:12px;
+  color:white;
+  font-weight:700;
+  font-family:inherit;
+  font-size:1rem;
   background:linear-gradient(110deg,#ff2875,#a000ff,#168cff);
-  box-shadow:0 0 22px #ff287577;cursor:pointer;
+  box-shadow:0 0 22px #ff287577;
+  cursor:pointer;
+  transition:transform .3s ease;
 }
+
 button:active{transform:scale(.96)}
+
 .card{
-  width:min(94vw,700px);padding:22px;margin:15px auto;
-  border-radius:22px;background:#111c32;
-  border:1px solid #168cff66;box-shadow:0 0 25px #168cff33;
+  width:min(94vw,700px);
+  padding:22px;
+  margin:15px auto;
+  border-radius:22px;
+  background:#111c32dd;
+  border:1px solid #168cff66;
+  box-shadow:0 0 25px #168cff33;
 }
+
 video{
-  width:100%;max-height:65vh;background:#000;
-  border-radius:16px;border:2px solid #168cff;
+  width:100%;
+  max-height:65vh;
+  background:#000;
+  border-radius:16px;
+  border:2px solid #168cff;
 }
-img{max-width:100%;max-height:60vh;object-fit:contain;border-radius:18px}
-.glow{color:white;text-shadow:0 0 12px #ff2875,0 0 25px #168cff}
+
+img{
+  max-width:100%;
+  max-height:60vh;
+  object-fit:contain;
+  border-radius:18px;
+}
+
+.glow{
+  color:white;
+  text-shadow:0 0 12px #ff2875,0 0 25px #168cff;
+}
+
 .stars{
-  position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:radial-gradient(#fff 1px,transparent 1px),
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+  radial-gradient(#fff 1px,transparent 1px),
   radial-gradient(#168cff 1px,transparent 1px);
   background-size:65px 65px,110px 110px;
-  opacity:.35;
+  opacity:.25;
 }
+
+.scene>*{z-index:1;position:relative}
+
 .heart-float{
-  position:fixed;bottom:-40px;z-index:10;pointer-events:none;
+  position:fixed;
+  bottom:-40px;
+  z-index:10;
+  pointer-events:none;
   animation:float 7s linear forwards;
 }
-@keyframes float{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+
+@keyframes float{
+  to{
+    transform:translateY(-115vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
 audio{display:none}
 
 /* LETTER */
+
 .envelope{
-  width:min(85vw,340px);height:210px;margin:25px auto;
-  position:relative;background:#ff527b;border-radius:10px;
-  box-shadow:0 0 30px #ff2875;cursor:pointer;
+  width:min(85vw,340px);
+  height:210px;
+  margin:25px auto;
+  position:relative;
+  background:#ff527b;
+  border-radius:10px;
+  box-shadow:0 0 30px #ff2875;
+  cursor:pointer;
 }
+
 .envelope:before{
-  content:"";position:absolute;inset:0;background:#ff9bb4;
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#ff9bb4;
   clip-path:polygon(0 0,100% 0,50% 62%);
-  transform-origin:top;transition:transform 1s;z-index:2;
+  transform-origin:top;
+  transition:transform 1s;
+  z-index:2;
 }
-.envelope.open:before{transform:rotateX(180deg)}
+
+.envelope.open:before{
+  transform:rotateX(180deg);
+}
+
 .envelope:after{
-  content:"💌";font-size:55px;position:absolute;
-  left:50%;top:50%;transform:translate(-50%,-50%);
+  content:"💌";
+  font-size:55px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
 }
+
 .paper{
-  display:none;width:min(94vw,700px);max-height:65vh;overflow:auto;
-  background:#fff2e9;color:#48243b;border-radius:15px;
-  padding:25px;text-align:left;line-height:2;
+  display:none;
+  width:min(94vw,700px);
+  max-height:65vh;
+  overflow:auto;
+  background:#fff2e9;
+  color:#48243b;
+  border-radius:15px;
+  padding:25px;
+  text-align:left;
+  line-height:2;
 }
-.paper.show{display:block;animation:unfold .9s ease}
+
+.paper.show{
+  display:block;
+  animation:unfold .9s ease;
+}
+
 @keyframes unfold{
   from{transform:scaleY(.05);opacity:0}
   to{transform:scaleY(1);opacity:1}
 }
 
-/* REAL GLASS JAR */
-.jar-area{position:relative;width:220px;height:290px;margin:25px auto}
+/* LOVE JAR */
+
+.jar-area{
+  position:relative;
+  width:220px;
+  height:290px;
+  margin:25px auto;
+}
+
 .jar-lid{
-  position:absolute;top:0;left:57px;width:106px;height:23px;
-  border-radius:7px;background:linear-gradient(#d9f4ff,#5998bd,#d9f4ff);
-  border:2px solid #b9eaff;z-index:4;
+  position:absolute;
+  top:0;
+  left:57px;
+  width:106px;
+  height:23px;
+  border-radius:7px;
+  background:linear-gradient(#d9f4ff,#5998bd,#d9f4ff);
+  border:2px solid #b9eaff;
+  z-index:4;
   box-shadow:0 0 12px #75d5ff;
 }
+
 .jar-glass{
-  position:absolute;top:18px;left:23px;width:174px;height:250px;
+  position:absolute;
+  top:18px;
+  left:23px;
+  width:174px;
+  height:250px;
   border:5px solid rgba(146,222,255,.9);
   border-radius:32px 32px 43px 43px;
-  background:linear-gradient(110deg,rgba(255,255,255,.2),rgba(60,140,255,.12),rgba(255,255,255,.08));
-  box-shadow:inset 8px 0 15px #fff3,inset -8px 0 15px #168cff33,0 0 25px #168cff88;
+  background:linear-gradient(110deg,
+  rgba(255,255,255,.2),
+  rgba(60,140,255,.12),
+  rgba(255,255,255,.08));
+  box-shadow:inset 8px 0 15px #fff3,
+  inset -8px 0 15px #168cff33,
+  0 0 25px #168cff88;
   overflow:hidden;
 }
+
 .jar-glass:before{
-  content:"";position:absolute;left:12px;top:12px;height:205px;width:9px;
-  border-radius:10px;background:#ffffff55;
+  content:"";
+  position:absolute;
+  left:12px;
+  top:12px;
+  height:205px;
+  width:9px;
+  border-radius:10px;
+  background:#ffffff55;
 }
+
 .chit-inside{
-  position:absolute;width:42px;height:28px;background:#fff0f5;
-  border:1px solid #ff9cbd;border-radius:4px;
+  position:absolute;
+  width:42px;
+  height:28px;
+  background:#fff0f5;
+  border:1px solid #ff9cbd;
+  border-radius:4px;
   box-shadow:0 0 8px #ff6caa;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-size:17px;
 }
-.chit-inside:nth-child(1){left:25px;top:65px;transform:rotate(15deg)}
-.chit-inside:nth-child(2){left:85px;top:45px;transform:rotate(-18deg)}
-.chit-inside:nth-child(3){left:50px;top:105px;transform:rotate(8deg)}
-.chit-inside:nth-child(4){left:105px;top:130px;transform:rotate(-12deg)}
-.chit-inside:nth-child(5){left:20px;top:165px;transform:rotate(-10deg)}
-.chit-inside:nth-child(6){left:83px;top:190px;transform:rotate(15deg)}
+
+.chit-inside:nth-child(1){left:25px;top:65px}
+.chit-inside:nth-child(2){left:85px;top:45px}
+.chit-inside:nth-child(3){left:50px;top:105px}
+.chit-inside:nth-child(4){left:105px;top:130px}
+.chit-inside:nth-child(5){left:20px;top:165px}
+.chit-inside:nth-child(6){left:83px;top:190px}
+
 .jar-glass.shake{animation:shakeJar .65s ease}
+
 @keyframes shakeJar{
   0%,100%{transform:rotate(0)}
   20%{transform:rotate(10deg) translateY(-5px)}
@@ -127,14 +265,27 @@ audio{display:none}
   60%{transform:rotate(8deg)}
   80%{transform:rotate(-6deg)}
 }
+
 .paper-chit{
-  display:none;width:min(90vw,520px);min-height:100px;
-  background:#fff0f5;color:#4b1835;padding:25px;
-  border-radius:12px;font-weight:700;font-size:1.1rem;
-  box-shadow:0 0 30px #ff4c9a;margin:20px auto;
+  display:none;
+  width:min(90vw,520px);
+  min-height:100px;
+  background:#fff0f5;
+  color:#4b1835;
+  padding:25px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:1.1rem;
+  box-shadow:0 0 30px #ff4c9a;
+  margin:20px auto;
   transform-origin:top;
 }
-.paper-chit.show{display:block;animation:chitUnfold .9s ease}
+
+.paper-chit.show{
+  display:block;
+  animation:chitUnfold .9s ease;
+}
+
 @keyframes chitUnfold{
   0%{opacity:0;transform:translateY(-100px) rotate(12deg) scaleY(.1)}
   45%{opacity:1;transform:translateY(0) rotate(-5deg) scaleY(.4)}
@@ -142,25 +293,49 @@ audio{display:none}
 }
 
 /* SHAYARI */
+
 .shayari{
-  font-family:Pacifico,cursive;font-size:clamp(1.1rem,4vw,1.7rem);
+  font-family:Pacifico,cursive;
+  font-size:clamp(1.1rem,4vw,1.7rem);
   line-height:2.1;
 }
 
 /* RING */
+
 .ring{
-  width:105px;height:105px;border:12px solid #ffd86b;
-  border-radius:50%;margin:25px auto;position:relative;
+  width:105px;
+  height:105px;
+  border:12px solid #ffd86b;
+  border-radius:50%;
+  margin:25px auto;
+  position:relative;
   box-shadow:0 0 25px #ffd86b;
 }
-.ring:before{content:"💎";position:absolute;top:-33px;left:25px;font-size:36px}
+
+.ring:before{
+  content:"💎";
+  position:absolute;
+  top:-33px;
+  left:25px;
+  font-size:36px;
+}
+
+/* NO BUTTON */
+
+#noButton{
+  transition:transform .25s ease;
+}
 
 /* FINAL */
+
 .big-heart{
-  font-size:clamp(115px,35vw,190px);line-height:1.4;
-  cursor:pointer;filter:drop-shadow(0 0 25px #ff2875);
+  font-size:clamp(115px,35vw,190px);
+  line-height:1.4;
+  cursor:pointer;
+  filter:drop-shadow(0 0 25px #ff2875);
   animation:heartbeat 1s infinite;
 }
+
 @keyframes heartbeat{
   0%,100%{transform:scale(1)}
   15%{transform:scale(1.16)}
@@ -168,323 +343,586 @@ audio{display:none}
   45%{transform:scale(1.2)}
   65%{transform:scale(1)}
 }
+
 .final-reveal{display:none}
-.final-reveal.show{display:block;animation:unfold 1.2s ease}
-.final-reveal img{width:min(90vw,500px);margin:15px auto}
+
+.final-reveal.show{
+  display:block;
+  animation:unfold 1.2s ease;
+}
+
+.final-reveal img{
+  width:min(90vw,500px);
+  margin:15px auto;
+}
+
 .final-note{
-  background:#111c32;border:1px solid #168cff88;
-  border-radius:20px;padding:22px;margin:15px auto;
-  width:min(92vw,600px);line-height:2;
+  background:#111c32ee;
+  border:1px solid #168cff88;
+  border-radius:20px;
+  padding:22px;
+  margin:15px auto;
+  width:min(92vw,600px);
+  line-height:2;
   box-shadow:0 0 25px #ff287566;
 }
 </style>
 </head>
 
 <body>
+
 <div class="stars"></div>
+
 <audio id="music" loop preload="auto"></audio>
 
 <!-- OPENING -->
+
 <section class="scene active" id="opening">
-  <p class="glow">A little universe made just for you ✨</p>
-  <h1>Happy 19th Birthday, Shivi! ❤️</h1>
-  <div class="card">
-    <video controls playsinline>
-      <source src="Cut cake.mp4">
-    </video>
-    <p>Today is all about you, my rabbit 💋</p>
-  </div>
-  <button onclick="goTo('letter')">Open your surprise ❤️</button>
+
+<p class="glow">A little universe made just for you ✨</p>
+
+<h1>Happy 19th Birthday, Shivi! ❤️</h1>
+
+<div class="card">
+
+<video controls playsinline>
+<source src="Cut cake.mp4">
+</video>
+
+<p>Today is all about you, my rabbit 💋</p>
+
+</div>
+
+<button onclick="goTo('letter')">
+Open your surprise ❤️
+</button>
+
 </section>
+
 
 <!-- LETTER -->
-<section class="scene" id="letter">
-  <h1>A letter for my bunny 💌</h1>
-  <p>Tap the envelope to open it...</p>
-  <div class="envelope" id="envelope" onclick="openLetter()"></div>
 
-  <div class="paper" id="letterPaper">
-    <h2 style="color:#e72c61;text-align:center">To my Shivi ❤️</h2>
-    <p>We have completed 4 months of celebrating our love..everyday and every moment i feel loved because of you..You are not only my boyfriend...but also a great friend who supports me whenever it is needed..you have never left me alone..whenever there was a problem i knew that if no one is there on my side...my shivi will be there for me always...you have gained my trust love and respect...and it is increasing day by day..Oyy ye sab gpt se nhi likhaa rhi haa😛...</p>
-    <p>Aap ne har baar mera saath diyaa hai...koi bhi decision lu you always agreed with me..you have loved me so much that no one else could...I thank god everyday that he has blessed me with such a kind hearted person...i love you to the core of my heart...i promise that i will never leave you my rabbit..the journey is 7 years long..but i will not leave your hand too..you mean everything to me</p>
-    <p>You are not just a good boyfriend but also a great friend a great son and a great brother...you have changed my perspective about boys...you are the only boy that eisha ever loved and will love till her death...</p>
-    <p>You are the onlyy boy with whom i felt this comfortable with...even while sharing that photos i was not scared that you will use them...cause i trust you..and i know you would not break it...I feel so safe with you..and every girl does...even after knowing abt my past you never judged me...and even after becoming my bf...you let me live my life my own way..i am really thankful to you for all this...you are my safe place..you are my good luck charm you are my everything shivi...i love you so so so so so muchh...❤️</p>
-    <p>In future i want everything to stay the same...and i won't change your bagoo will remain yours forever..if u fail i am there...if u pass i am there...if u have nothing i am there...if u have everything i am there...whatever the situation may be...i will be always there for you..cause I LOVE YOU and i will always LOVE YOU mister shivam my bunny Ummmmmahhhh love you so so so much...once again happy birthday my baby 💋💋💋❤️❤️❤️❤️</p>
-    <h2 style="color:#e72c61;text-align:center">Forever yours ❤️</h2>
-  </div>
-  <button onclick="goTo('memories')">Continue to our memories 💗</button>
+<section class="scene" id="letter">
+
+<h1>A letter for my bunny 💌</h1>
+
+<p>Tap the envelope to open it...</p>
+
+<div class="envelope" id="envelope" onclick="openLetter()"></div>
+
+<div class="paper" id="letterPaper">
+
+<h2 style="color:#e72c61;text-align:center">
+To my Shivi ❤️
+</h2>
+
+<p>We have completed 4 months of celebrating our love..everyday and every moment i feel loved because of you..You are not only my boyfriend...but also a great friend who supports me whenever it is needed..you have never left me alone..whenever there was a problem i knew that if no one is there on my side...my shivi will be there for me always...you have gained my trust love and respect...and it is increasing day by day..Oyy ye sab gpt se nhi likhaa rhi haa😛...</p>
+
+<p>Aap ne har baar mera saath diyaa hai...koi bhi decision lu you always agreed with me..you have loved me so much that no one else could...I thank god everyday that he has blessed me with such a kind hearted person...i love you to the core of my heart...i promise that i will never leave you my rabbit..the journey is 7 years long..but i will not leave your hand too..you mean everything to me</p>
+
+<p>You are not just a good boyfriend but also a great friend a great son and a great brother...you have changed my perspective about boys...you are the only boy that eisha ever loved and will love till her death...</p>
+
+<p>You are the onlyy boy with whom i felt this comfortable with...even while sharing that photos i was not scared that you will use them...cause i trust you..and i know you would not break it...I feel so safe with you..and every girl does...even after knowing abt my past you never judged me...and even after becoming my bf...you let me live my life my own way..i am really thankful to you for all this...you are my safe place..you are my good luck charm you are my everything shivi...i love you so so so so so muchh...❤️</p>
+
+<p>In future i want everything to stay the same...and i won't change your bagoo will remain yours forever..if u fail i am there...if u pass i am there...if u have nothing i am there...if u have everything i am there...whatever the situation may be...i will be always there for you..cause I LOVE YOU and i will always LOVE YOU mister shivam my bunny Ummmmmahhhh love you so so so much...once again happy birthday my baby 💋💋💋❤️❤️❤️❤️</p>
+
+<h2 style="color:#e72c61;text-align:center">
+Forever yours ❤️
+</h2>
+
+</div>
+
+<button onclick="goTo('memories')">
+Continue to our memories 💗
+</button>
+
 </section>
+
 
 <!-- MEMORIES -->
+
 <section class="scene" id="memories">
-  <h1>Our little memories 📸</h1>
-  <div class="card">
-    <video controls playsinline>
-      <source src="Eisha shivi love.mp4">
-    </video>
-    <p>Every little moment with you is special. ❤️</p>
-  </div>
-  <button onclick="goTo('reasons')">Next surprise 🫙</button>
+
+<h1>Our little memories 📸</h1>
+
+<div class="card">
+
+<video controls playsinline>
+<source src="Eisha shivi love.mp4">
+</video>
+
+<p>Every little moment with you is special. ❤️</p>
+
+</div>
+
+<button onclick="goTo('reasons')">
+Next surprise 🫙
+</button>
+
 </section>
+
 
 <!-- REASONS -->
+
 <section class="scene" id="reasons">
-  <h1>19 reasons why I love you ❤️</h1>
-  <p class="glow">On your 19th birthday here are 19 reasons whyy i love you my rabbit</p>
 
-  <div class="jar-area">
-    <div class="jar-lid"></div>
-    <div class="jar-glass" id="jar">
-      <div class="chit-inside">💌</div>
-      <div class="chit-inside">💌</div>
-      <div class="chit-inside">💌</div>
-      <div class="chit-inside">💌</div>
-      <div class="chit-inside">💌</div>
-      <div class="chit-inside">💌</div>
-    </div>
-  </div>
+<h1>19 reasons why I love you ❤️</h1>
 
-  <p>Shake the jar and pick your folded chit!</p>
-  <button id="pickButton" onclick="pickReason()">Pick a chit 💌</button>
-  <div class="paper-chit" id="chit"></div>
-  <p class="glow" id="reasonCount">0 / 19 opened</p>
-  <button id="reasonNext" style="display:none" onclick="goTo('shayari')">Continue 💙</button>
+<p class="glow">
+On your 19th birthday here are 19 reasons whyy i love you my rabbit
+</p>
+
+<div class="jar-area">
+
+<div class="jar-lid"></div>
+
+<div class="jar-glass" id="jar">
+
+<div class="chit-inside">💌</div>
+<div class="chit-inside">💌</div>
+<div class="chit-inside">💌</div>
+<div class="chit-inside">💌</div>
+<div class="chit-inside">💌</div>
+<div class="chit-inside">💌</div>
+
+</div>
+</div>
+
+<p>Shake the jar and pick your folded chit!</p>
+
+<button id="pickButton" onclick="pickReason()">
+Pick a chit 💌
+</button>
+
+<div class="paper-chit" id="chit"></div>
+
+<p class="glow" id="reasonCount">
+0 / 19 opened
+</p>
+
+<button id="reasonNext" style="display:none"
+onclick="goTo('shayari')">
+Continue 💙
+</button>
+
 </section>
+
 
 <!-- SHAYARI -->
+
 <section class="scene" id="shayari">
-  <h1>Arz Kya Hai... 🌙</h1>
-  <div class="card shayari">
-    Arz kya hai<br>
-    Itnaa haseen chehra hai aapka<br>
-    Ki itna haseen chehra hai aapka<br>
-    Dil mera deewana hai aapka<br>
-    Log kehte hai aapko chaand ka tukda<br>
-    Par humare liye chaand bhi tukda hai aapka🤭💋❤️
-  </div>
-  <button onclick="goTo('proposal')">One more question... 💍</button>
+
+<h1>Arz Kya Hai... 🌙</h1>
+
+<div class="card shayari">
+
+Arz kya hai<br>
+Itnaa haseen chehra hai aapka<br>
+Ki itna haseen chehra hai aapka<br>
+Dil mera deewana hai aapka<br>
+Log kehte hai aapko chaand ka tukda<br>
+Par humare liye chaand bhi tukda hai aapka🤭💋❤️
+
+</div>
+
+<button onclick="goTo('proposal')">
+One more question... 💍
+</button>
+
 </section>
+
 
 <!-- PROPOSAL -->
+
 <section class="scene" id="proposal">
-  <h1>One question, my love... 💍</h1>
-  <div class="ring"></div>
-  <div class="card">
-    <video controls playsinline>
-      <source src="Proposal.mp4">
-    </video>
-    <h2>WILL YOU MARRY ME? ❤️</h2>
-    <button onclick="sayYes()">YESSS ❤️</button>
-    <button onclick="sayNo()">Let me think 🤭</button>
-    <p id="proposalReply"></p>
-  </div>
+
+<h1>One question, my love... 💍</h1>
+
+<div class="ring"></div>
+
+<div class="card">
+
+<video controls playsinline>
+<source src="Proposal.mp4">
+</video>
+
+<h2>WILL YOU MARRY ME? ❤️</h2>
+
+<button onclick="sayYes()">YESSS ❤️</button>
+
+<button id="noButton" onclick="sayNo()">
+NO 🙄
+</button>
+
+<p id="proposalReply"></p>
+
+</div>
+
 </section>
 
-<!-- HUG AFTER YES -->
+
+<!-- HUG -->
+
 <section class="scene" id="hug">
-  <h1>YOU SAID YESSS! ❤️</h1>
-  <p>Come here, my bunny! 🥹</p>
-  <div class="card">
-    <video id="hugVideo" controls playsinline>
-      <source src="Hug.mp4">
-    </video>
-  </div>
-  <button onclick="goTo('pajama')">I have another gift 🎁</button>
+
+<h1>YOU SAID YESSS! ❤️</h1>
+
+<p>Come here, my bunny! 🥹</p>
+
+<div class="card">
+
+<video id="hugVideo" controls playsinline>
+<source src="Hug.mp4">
+</video>
+
+</div>
+
+<button onclick="goTo('pajama')">
+I have another gift 🎁
+</button>
+
 </section>
+
 
 <!-- PAJAMA -->
+
 <section class="scene" id="pajama">
-  <h1>A little gift for you 🎁</h1>
-  <div class="card">
-    <img src="Pink pajama.png" alt="Pink pajama gift">
-    <h2>Your cute little gift! 💗</h2>
-    <p>Imagine us matching in these hehe 🤭</p>
-  </div>
-  <button onclick="goTo('final')">Last surprise 🕸️</button>
+
+<h1>A little gift for you 🎁</h1>
+
+<div class="card">
+
+<img src="Pink pajama.png" alt="Pink pajama gift">
+
+<h2>Your cute little gift! 💗</h2>
+
+<p>Imagine us matching in these hehe 🤭</p>
+
+</div>
+
+<button onclick="goTo('final')">
+Last surprise 🕸️
+</button>
+
 </section>
 
-<!-- FINAL: HEART FIRST, THEN GWEN + NOTE -->
+
+<!-- FINAL -->
+
 <section class="scene" id="final">
-  <h1>My Spider-Man 🕸️❤️</h1>
-  <p>Tap the heart, my love...</p>
 
-  <div class="big-heart" id="bigHeart" onclick="revealFinal()">❤️</div>
+<h1>My Spider-Man 🕸️❤️</h1>
 
-  <div class="final-reveal" id="finalReveal">
-    <img src="Gwen.png" alt="Spider-Man and Gwen">
-    <div class="final-note">
-      Will u be my spiderman for the rest of my life...you mean everything to me baby...please always stay happy your eishiyaa loves you
-      <h2>LOVE YOU FOREVER 💋❤️</h2>
-    </div>
-  </div>
-  <p class="glow">Your Eishiyaa ❤️</p>
+<p>Tap the heart, my love...</p>
+
+<div class="big-heart" id="bigHeart"
+onclick="revealFinal()">❤️</div>
+
+<div class="final-reveal" id="finalReveal">
+
+<img src="Gwen.png" alt="Spider-Man and Gwen">
+
+<div class="final-note">
+
+Will u be my spiderman for the rest of my life...you mean everything to me baby...please always stay happy your eishiyaa loves you
+
+<h2>LOVE YOU FOREVER 💋❤️</h2>
+
+</div>
+
+</div>
+
+<p class="glow">Your Eishiyaa ❤️</p>
+
 </section>
+
 
 <script>
+
 const music = document.getElementById('music');
 
+
+/* UPDATED SONGS */
+
 const songs = {
-  letter: 'Sab Tera   Shraddha Kapoor   Armaan Malik.mp3',
-  memories: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a',
-  reasons: 'Aankhon Se Batana.m4a.mp4',
-  shayari: 'Arz kya hai.mp4',
-  proposal: 'KAUN TUJHE   PALAK MUCHHAL   AMAAL MALLIK.mp3',
-  pajama: 'KAUN TUJHE   PALAK MUCHHAL   AMAAL MALLIK.mp3'
+
+letter: 'Sab Tera   Shraddha Kapoor   Armaan Malik.mp3',
+
+memories: 'Tum Se Hi - Mohit Chauhan.mp3',
+
+reasons: 'Aankhon Se Batana.m4a.mp4',
+
+shayari: 'Arz kya hai.mp4',
+
+proposal: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a',
+
+pajama: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a'
+
 };
 
-function stopAllMedia() {
+
+function stopAllMedia(){
+
   music.pause();
   music.removeAttribute('src');
   music.load();
 
-  document.querySelectorAll('.scene video').forEach(video => {
+  document.querySelectorAll('.scene video').forEach(video=>{
     video.pause();
-    video.currentTime = 0;
+    video.currentTime=0;
   });
+
 }
 
-function playSectionSong(section) {
-  const file = songs[section];
+
+function playSectionSong(section){
+
+  const file=songs[section];
 
   music.pause();
   music.removeAttribute('src');
   music.load();
 
-  if (!file) return;
+  if(!file)return;
 
-  music.src = file;
+  music.src=file;
   music.load();
 
-  const attempt = music.play();
-  if (attempt && attempt.catch) {
-    attempt.catch(() => {
-      // Playback can be blocked by browser settings or an unsupported file format.
-    });
+  const attempt=music.play();
+
+  if(attempt && attempt.catch){
+    attempt.catch(()=>{});
   }
+
 }
 
-function goTo(id) {
+
+function goTo(id){
+
   stopAllMedia();
 
-  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.scene').forEach(s=>{
+    s.classList.remove('active');
+  });
+
   document.getElementById(id).classList.add('active');
 
   window.scrollTo({top:0,behavior:'smooth'});
 
   playSectionSong(id);
 
-  if (id === 'hug') {
-    const video = document.getElementById('hugVideo');
-    video.currentTime = 0;
-    video.play().catch(() => {});
+  if(id==='hug'){
+
+    const video=document.getElementById('hugVideo');
+
+    video.currentTime=0;
+    video.play().catch(()=>{});
+
   }
+
 }
 
-function openLetter() {
+
+/* LETTER */
+
+function openLetter(){
+
   document.getElementById('envelope').classList.add('open');
-  setTimeout(() => {
+
+  setTimeout(()=>{
     document.getElementById('letterPaper').classList.add('show');
-  }, 650);
+  },650);
+
 }
 
-/* 19 EXACT REASONS */
-const reasons = [
-"Because you are kind hearted",
-"Because you always make everyone around you feel loved",
-"Because you respect women",
-"Beacuse you have a great personality ",
-"Beacuse you respect your elders",
-"Because you care about everyone",
-"Beacuse you remember my period date (my fav lmao)",
-"Beacuse you are handsome(even if you were not i would have loved you hehe)",
-"You have a great cute smile awwwwww",
-"You get shy around me khikhikhi",
-"Beacuse everyone feels safe around you",
-"Beacuse you have a sexy voice",
-"Because you accept your mistakes",
-"Because you don't have male ego",
-"Because you care about your future",
-"Because you help people in trouble",
-"Because you make me laugh when i am sad",
-"Because you have a heart of gold",
-"Because you are my everything"
+
+/* 19 REASONS WITH CUTE EMOJIS */
+
+const reasons=[
+
+"Because you are kind hearted 🥹❤️",
+
+"Because you always make everyone around you feel loved 🧸💗",
+
+"Because you respect women 🌷",
+
+"Beacuse you have a great personality ✨",
+
+"Beacuse you respect your elders 🙏🏻❤️",
+
+"Because you care about everyone 🫶🏻",
+
+"Beacuse you remember my period date (my fav lmao) 😭💗",
+
+"Beacuse you are handsome (even if you were not i would have loved you hehe) 🤭💋",
+
+"You have a great cute smile awwwwww 🥺❤️",
+
+"You get shy around me khikhikhi 🙈💕",
+
+"Beacuse everyone feels safe around you 🏡💗",
+
+"Beacuse you have a sexy voice 🎧❤️",
+
+"Because you accept your mistakes 🥹🌸",
+
+"Because you don't have male ego 👑❤️",
+
+"Because you care about your future 🌟",
+
+"Because you help people in trouble 🫂💙",
+
+"Because you make me laugh when i am sad 🥺😂",
+
+"Because you have a heart of gold 💛",
+
+"Because you are my everything 🧿❤️"
+
 ];
 
-let remaining = [...reasons];
-let opened = 0;
 
-function pickReason() {
-  if (!remaining.length) return;
+let remaining=[...reasons];
+let opened=0;
 
-  const jar = document.getElementById('jar');
-  const button = document.getElementById('pickButton');
-  const chit = document.getElementById('chit');
 
-  button.disabled = true;
-  button.textContent = 'Shuffling the chits...';
+function pickReason(){
+
+  if(!remaining.length)return;
+
+  const jar=document.getElementById('jar');
+  const button=document.getElementById('pickButton');
+  const chit=document.getElementById('chit');
+
+  button.disabled=true;
+  button.textContent='Shuffling the chits...';
 
   jar.classList.remove('shake');
   void jar.offsetWidth;
   jar.classList.add('shake');
 
-  document.querySelectorAll('.chit-inside').forEach((paper, i) => {
+  document.querySelectorAll('.chit-inside').forEach((paper,i)=>{
+
     paper.animate([
+
       {transform:'translate(0,0) rotate(0deg)'},
-      {transform:`translate(${i%2 ? 25 : -25}px,${i%3 ? -25 : 25}px) rotate(160deg)`},
-      {transform:`translate(${i%2 ? -12 : 12}px,${i%3 ? 15 : -15}px) rotate(300deg)`},
+
+      {transform:`translate(${i%2?25:-25}px,${i%3?-25:25}px) rotate(160deg)`},
+
+      {transform:`translate(${i%2?-12:12}px,${i%3?15:-15}px) rotate(300deg)`},
+
       {transform:'translate(0,0) rotate(360deg)'}
-    ], {duration:650,iterations:2});
+
+    ],{duration:650,iterations:2});
+
   });
 
-  setTimeout(() => {
-    const index = Math.floor(Math.random() * remaining.length);
-    const chosen = remaining.splice(index,1)[0];
+
+  setTimeout(()=>{
+
+    const index=Math.floor(Math.random()*remaining.length);
+
+    const chosen=remaining.splice(index,1)[0];
 
     chit.classList.remove('show');
+
     void chit.offsetWidth;
-    chit.textContent = chosen;
+
+    chit.textContent=chosen;
+
     chit.classList.add('show');
 
     opened++;
-    document.getElementById('reasonCount').textContent = opened + ' / 19 opened';
 
-    button.disabled = false;
+    document.getElementById('reasonCount').textContent=
+    opened+' / 19 opened';
 
-    if (remaining.length === 0) {
-      button.style.display = 'none';
-      document.getElementById('reasonNext').style.display = 'inline-block';
-    } else {
-      button.textContent = 'Pick another chit 💌';
+    button.disabled=false;
+
+    if(remaining.length===0){
+
+      button.style.display='none';
+
+      document.getElementById('reasonNext').style.display='inline-block';
+
+    }else{
+
+      button.textContent='Pick another chit 💌';
+
     }
-  }, 1250);
+
+  },1250);
+
 }
 
-function sayYes() {
-  document.getElementById('proposalReply').textContent = 'BEST ANSWER EVER!!! ❤️🥹';
+
+/* YES BUTTON */
+
+function sayYes(){
+
+  document.getElementById('proposalReply').textContent=
+  'BEST ANSWER EVER!!! ❤️🥹';
+
   goTo('hug');
+
 }
 
-function sayNo() {
-  document.getElementById('proposalReply').textContent =
-    'Hehe take your time 🤭❤️';
+
+/* NO BUTTON - FUNNY MESSAGE + SHIFTING */
+
+function sayNo(){
+
+  const reply=document.getElementById('proposalReply');
+
+  reply.textContent=
+  'Ab aap mere hi ho, chudail picha chhod degi but Eisha nhi 😭😂❤️';
+
+  const button=document.getElementById('noButton');
+
+  const x=Math.floor(Math.random()*160)-80;
+  const y=Math.floor(Math.random()*100)-50;
+
+  button.style.transform=`translate(${x}px,${y}px)`;
+
 }
 
-function revealFinal() {
-  document.getElementById('bigHeart').style.display = 'none';
-  document.querySelector('#final > p').style.display = 'none';
+
+/* FINAL HEART REVEAL */
+
+function revealFinal(){
+
+  document.getElementById('bigHeart').style.display='none';
+
+  document.querySelector('#final > p').style.display='none';
+
   document.getElementById('finalReveal').classList.add('show');
+
 }
 
-function floatingHearts() {
-  const el = document.createElement('div');
-  el.className = 'heart-float';
-  el.textContent = ['❤️','💙','💋','💕','🕸️'][Math.floor(Math.random()*5)];
-  el.style.left = Math.random()*100 + 'vw';
-  el.style.fontSize = (16 + Math.random()*18) + 'px';
+
+/* FLOATING HEARTS */
+
+function floatingHearts(){
+
+  const el=document.createElement('div');
+
+  el.className='heart-float';
+
+  el.textContent=['❤️','💙','💋','💕','🕸️','🧸','🫶🏻']
+  [Math.floor(Math.random()*7)];
+
+  el.style.left=Math.random()*100+'vw';
+
+  el.style.fontSize=(16+Math.random()*18)+'px';
+
   document.body.appendChild(el);
-  setTimeout(() => el.remove(),7000);
+
+  setTimeout(()=>el.remove(),7000);
+
 }
+
 setInterval(floatingHearts,700);
+
 </script>
+
 </body>
 </html>
