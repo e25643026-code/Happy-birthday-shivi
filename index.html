@@ -4,1048 +4,604 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#030611">
-<title>Happy 19th Birthday Shivi ❤️</title>
+<title>For My Shivi ❤️</title>
 
 <style>
-:root{
- --red:#ff174f;
- --blue:#168cff;
- --pink:#ff65a3;
- --dark:#030611;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --red: #ff3157;
+  --blue: #168cff;
+  --dark: #080d19;
+  --card: #111c32;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+* { box-sizing: border-box; }
 
-html,body{
- width:100%;
- min-height:100%;
- background:var(--dark);
- color:white;
- font-family:Georgia,serif;
+body {
+  margin: 0;
+  background: var(--dark);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
-body{overflow:hidden}
-
-.scene{
- display:none;
- width:100%;
- height:100dvh;
- min-height:100vh;
- overflow-y:auto;
- overflow-x:hidden;
- padding:35px 17px 115px;
- text-align:center;
- background:
- radial-gradient(ellipse at 12% 15%,#30102e,transparent 40%),
- radial-gradient(ellipse at 90% 75%,#09295d,transparent 45%),
- #030611;
+button {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.scene.active{
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- gap:17px;
- animation:fade .7s ease;
+.scene {
+  display: none;
+  min-height: 100vh;
+  padding: 35px 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes fade{
- from{opacity:0;transform:translateY(15px)}
- to{opacity:1;transform:translateY(0)}
+.scene.active { display: flex; }
+
+h1, h2 {
+  font-family: 'Pacifico', cursive;
+  text-shadow: 0 0 15px #ff3157, 0 0 35px #168cff;
 }
 
-h1{
- font-size:clamp(35px,9vw,58px);
- line-height:1.2;
- color:#ff426e;
- text-shadow:0 0 12px #ff174f,0 0 28px #ff174f,0 0 35px #168cff;
- margin:8px 0;
+h1 { font-size: clamp(2.3rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 6vw, 3rem); }
+
+p {
+  line-height: 1.9;
+  font-size: 1rem;
 }
 
-h2{
- font-size:clamp(27px,7vw,39px);
- color:#70c4ff;
- text-shadow:0 0 18px #168cff;
- margin:10px 0;
+button.main {
+  background: linear-gradient(120deg, var(--red), #a600ff, var(--blue));
+  color: white;
+  padding: 15px 27px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 12px;
+  box-shadow: 0 0 22px #ff315788;
+  transition: .25s;
 }
 
-p{
- font-size:19px;
- line-height:1.8;
+button.main:hover { transform: scale(1.07); }
+
+.small-note {
+  color: #c9d8ff;
+  font-size: .85rem;
 }
 
-.small{
- font-size:16px;
- color:#b6d7ff;
+video {
+  width: min(90vw, 650px);
+  max-height: 65vh;
+  border-radius: 20px;
+  border: 2px solid #168cff;
+  box-shadow: 0 0 25px #168cff66;
+  background: black;
 }
 
-button{
- border:1px solid #ff4774;
- border-radius:35px;
- padding:16px 26px;
- margin:9px;
- color:white;
- font-family:Georgia,serif;
- font-size:17px;
- background:linear-gradient(120deg,#a90040,#092c69);
- box-shadow:0 0 17px #ff174f,0 0 12px #168cff;
- cursor:pointer;
+img {
+  max-width: 90%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 20px;
 }
 
-button:active{transform:scale(.95)}
-
-.media{
- width:min(94vw,460px);
- max-height:53dvh;
- object-fit:contain;
- background:#000;
- border:3px solid #168cff;
- border-radius:17px;
- box-shadow:0 0 23px #168cff;
+audio {
+  width: min(90vw, 420px);
+  margin: 18px auto;
+  display: block;
 }
 
-.hidden{display:none!important}
-
-/* MUSIC PLAYER */
-
-.music-player{
- position:fixed;
- bottom:5px;
- left:50%;
- transform:translateX(-50%);
- width:min(94vw,450px);
- padding:10px 13px;
- border:1px solid #168cff;
- border-radius:15px;
- background:#080e21f5;
- box-shadow:0 0 15px #168cff;
- z-index:20;
+.glow {
+  color: #fff;
+  text-shadow: 0 0 10px #ff3157, 0 0 25px #ff3157;
 }
 
-.music-player p{
- font-size:13px;
- color:#ff91b4;
- margin-bottom:4px;
+.card {
+  background: linear-gradient(145deg, #14223d, #10101e);
+  border: 1px solid #168cff88;
+  box-shadow: 0 0 25px #168cff33;
+  border-radius: 24px;
+  padding: 25px;
+  width: min(92vw, 700px);
+  margin: 15px auto;
 }
 
-.music-player audio{
- width:100%;
- height:39px;
+.heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 20;
+  animation: floatUp 7s linear forwards;
+  font-size: 22px;
 }
 
-/* FLOATING HEARTS */
-
-.heart{
- position:fixed;
- bottom:-40px;
- left:var(--x);
- font-size:var(--size);
- pointer-events:none;
- z-index:5;
- animation:floatUp var(--duration) linear forwards;
- filter:drop-shadow(0 0 7px #ff174f);
+@keyframes floatUp {
+  to { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
 }
 
-@keyframes floatUp{
- 15%{opacity:1}
- 100%{
-  transform:translateY(-115vh) rotate(360deg);
-  opacity:0;
- }
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(#168cff 1px, transparent 1px);
+  background-size: 65px 65px, 105px 105px;
+  background-position: 0 0, 30px 40px;
+  opacity: .35;
 }
 
-/* LETTER ENVELOPE */
+.scene-title { margin-bottom: 10px; }
 
-.envelope-wrap{
- width:min(85vw,380px);
- height:255px;
- position:relative;
- margin:15px auto;
- perspective:1000px;
+.envelope {
+  width: min(85vw, 340px);
+  height: 210px;
+  position: relative;
+  margin: 30px auto;
+  background: #ff5274;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 35px #ff315788;
 }
 
-.envelope{
- position:absolute;
- top:40px;
- width:100%;
- height:190px;
- border:3px solid #168cff;
- border-radius:12px;
- background:linear-gradient(140deg,#0b2854,#160b2c);
- box-shadow:0 0 25px #168cff;
- cursor:pointer;
+.envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ff8ba1;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top;
+  transition: transform 1s;
+  z-index: 2;
 }
 
-.flap{
- position:absolute;
- top:0;
- width:100%;
- height:130px;
- background:linear-gradient(130deg,#ff174f,#8b124d);
- clip-path:polygon(0 0,100% 0,50% 100%);
- transform-origin:top;
- transition:transform 1s ease;
- z-index:3;
+.envelope.open:before {
+  transform: rotateX(180deg);
 }
 
-.envelope.open .flap{
- transform:rotateX(180deg);
+.envelope:after {
+  content: "❤️";
+  position: absolute;
+  font-size: 48px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
-.seal{
- position:absolute;
- top:65px;
- left:50%;
- transform:translateX(-50%);
- font-size:45px;
- z-index:4;
+.letter-paper {
+  display: none;
+  background: #fff2e9;
+  color: #402438;
+  border-radius: 15px;
+  padding: 25px;
+  width: min(92vw, 700px);
+  max-height: 65vh;
+  overflow-y: auto;
+  text-align: left;
+  line-height: 2;
+  box-shadow: 0 0 35px #ff7899;
+  animation: unfold 1s ease;
 }
 
-.envelope.open .seal{opacity:0}
+.letter-paper.show { display: block; }
 
-.letter-paper{
- display:none;
- width:min(94vw,620px);
- max-height:48dvh;
- overflow-y:auto;
- text-align:left;
- padding:25px;
- border:2px solid #ff4774;
- border-radius:18px;
- background:linear-gradient(145deg,#fff0f5,#dbeaff);
- color:#172039;
- box-shadow:0 0 25px #ff174f,0 0 14px #168cff;
+@keyframes unfold {
+  from { transform: scaleY(.05); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
 }
 
-.letter-paper.show{
- display:block;
- animation:paperOpen .9s ease;
+.jar {
+  width: 170px;
+  height: 210px;
+  margin: 25px auto;
+  border: 5px solid #8ad5ff;
+  border-radius: 35px 35px 45px 45px;
+  background: linear-gradient(140deg, #168cff55, #ff315755);
+  position: relative;
+  animation: jarShake 2s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+  box-shadow: 0 0 30px #168cff88;
 }
 
-@keyframes paperOpen{
- from{opacity:0;transform:translateY(40px) scale(.9)}
- to{opacity:1;transform:none}
+@keyframes jarShake {
+  0%,100% { transform: rotate(0); }
+  25% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
 }
 
-.letter-paper h2{
- color:#b00048;
- text-align:center;
- text-shadow:none;
+.chit {
+  display: none;
+  background: #fff0f5;
+  color: #481b38;
+  padding: 25px;
+  border-radius: 18px;
+  width: min(90vw, 520px);
+  font-size: 1.15rem;
+  font-weight: 600;
+  box-shadow: 0 0 30px #ff3157;
+  animation: unfold .7s ease;
 }
 
-.letter-paper p{
- font-size:17px;
- line-height:1.85;
- margin:15px 0;
+.chit.show { display: block; }
+
+.ring {
+  width: 110px;
+  height: 110px;
+  border: 12px solid #ffd86b;
+  border-radius: 50%;
+  box-shadow: 0 0 25px #ffd86b;
+  margin: 20px auto;
+  position: relative;
 }
 
-/* LOVE REASONS JAR */
-
-.jar-area{
- position:relative;
- width:260px;
- height:310px;
- margin:15px auto;
+.ring:before {
+  content: "💎";
+  position: absolute;
+  top: -30px;
+  left: 28px;
+  font-size: 35px;
 }
 
-.jar{
- position:absolute;
- bottom:0;
- left:50%;
- transform:translateX(-50%);
- width:245px;
- height:275px;
- border:5px solid #73c8ff;
- border-top:0;
- border-radius:25px 25px 60px 60px;
- background:linear-gradient(90deg,#168cff33,#ff3d6933,#168cff33);
- box-shadow:inset 0 0 35px #168cff66,0 0 25px #168cff;
- overflow:hidden;
+.yes-button { background: #ff3157 !important; }
+.no-button { background: #168cff !important; }
+
+#shayariText {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.15rem, 4vw, 1.8rem);
+  line-height: 2.1;
 }
 
-.jar:before{
- content:"";
- position:absolute;
- top:0;
- left:-5px;
- width:245px;
- height:25px;
- border:5px solid #ff4774;
- border-radius:10px;
- background:#11152d;
+.final-heart {
+  font-size: 90px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 20px #ff3157);
+  animation: pulse 1.2s infinite;
 }
 
-.jar-label{
- position:absolute;
- top:105px;
- left:15px;
- right:15px;
- padding:17px 5px;
- border:2px solid #ff4774;
- border-radius:13px;
- background:#100b20e8;
- color:white;
- font-size:22px;
- text-shadow:0 0 12px #ff174f;
- z-index:2;
+@keyframes pulse {
+  50% { transform: scale(1.2); }
 }
 
-.jar-chit{
- position:absolute;
- font-size:27px;
- animation:bob 1.5s infinite alternate ease-in-out;
+#finalMessage {
+  display: none;
+  font-size: 1.2rem;
+  max-width: 650px;
+  line-height: 2;
+  animation: unfold 1s;
 }
 
-@keyframes bob{
- to{transform:translateY(-9px) rotate(15deg)}
-}
+#finalMessage.show { display: block; }
 
-.jar.mixing{
- animation:shake .55s ease-in-out 3;
-}
-
-@keyframes shake{
- 0%,100%{transform:translateX(-50%) rotate(0)}
- 20%{transform:translateX(-50%) rotate(-9deg)}
- 40%{transform:translateX(-50%) rotate(9deg)}
- 60%{transform:translateX(-50%) rotate(-8deg)}
- 80%{transform:translateX(-50%) rotate(8deg)}
-}
-
-/* DRAWN CHIT */
-
-.drawn-chit{
- display:none;
- width:110px;
- height:125px;
- background:linear-gradient(145deg,#fff0f5,#d7e9ff);
- border:2px solid #ff4774;
- border-radius:12px;
- color:#a50042;
- font-size:48px;
- align-items:center;
- justify-content:center;
- box-shadow:0 0 25px #ff174f;
- margin:12px auto;
-}
-
-.drawn-chit.show{
- display:flex;
- animation:flyOut .9s ease;
-}
-
-@keyframes flyOut{
- from{transform:translateY(-130px) scale(.4);opacity:0}
- to{transform:translateY(0) scale(1);opacity:1}
-}
-
-/* UNFOLDING REASON */
-
-.reason-paper{
- display:none;
- width:min(93vw,460px);
- min-height:145px;
- padding:23px;
- margin:15px auto;
- border:2px solid #168cff;
- border-radius:15px;
- background:linear-gradient(145deg,#fff0f5,#dceaff);
- color:#172039;
- box-shadow:0 0 23px #168cff,0 0 15px #ff174f;
- font-size:20px;
- line-height:1.8;
-}
-
-.reason-paper.show{
- display:block;
- animation:unfold .9s ease;
-}
-
-@keyframes unfold{
- 0%{transform:perspective(600px) rotateX(-90deg);opacity:0}
- 100%{transform:perspective(600px) rotateX(0);opacity:1}
-}
-
-/* SHAYARI */
-
-.shayari{
- width:min(94vw,620px);
- padding:28px 18px;
- border:2px solid #ff4774;
- border-radius:20px;
- background:#100b20;
- box-shadow:0 0 22px #ff174f;
-}
-
-.shayari p{
- font-size:clamp(19px,5vw,25px);
- line-height:2;
-}
-
-/* FINAL HEART */
-
-.ring{
- font-size:85px;
- border:0;
- background:transparent;
- box-shadow:none;
- animation:heartbeat 1.2s infinite;
-}
-
-@keyframes heartbeat{
- 0%,100%{transform:scale(1)}
- 50%{transform:scale(1.2)}
-}
-
-@media(max-height:700px){
- .scene.active{justify-content:flex-start}
- .media{max-height:36dvh}
- .letter-paper{max-height:40dvh}
- .music-player{padding:5px}
+@media(max-width: 500px) {
+  .scene { padding: 25px 12px; }
+  .card { padding: 18px; }
 }
 </style>
 </head>
 
 <body>
+<div class="stars"></div>
 
-<!-- GLOBAL MUSIC PLAYER -->
-<div class="music-player">
- <p id="trackName">🎵 Your birthday soundtrack</p>
- <audio id="music" controls preload="auto"></audio>
-</div>
+<!-- One shared audio player. Each section changes its song. -->
+<audio id="music" controls loop></audio>
 
-
-<!-- 1. BIRTHDAY OPENING -->
-
-<section class="scene active" id="s1">
-
-<h1>HAPPY 19TH BIRTHDAY SHIVI ❤️</h1>
-
-<p>My favourite boy is turning 19!! 🕷️💙</p>
-
-<p class="small">
-A little birthday surprise made with lots of love by your Eishiyaa ❤️
-</p>
-
-<video class="media" controls playsinline preload="metadata">
-<source src="Cut cake.mp4" type="video/mp4">
-</video>
-
-<p>Today is all about YOU, mister! 🎂</p>
-
-<button onclick="go(2,'I Love You Pritam, Ash King Clinton Cerejo (1).m4a','I Love You ❤️')">
-OPEN YOUR SURPRISE ❤️
-</button>
-
+<!-- SCENE 1: BIRTHDAY OPENING -->
+<section class="scene active" id="opening">
+  <p class="glow">A little universe made just for you ✨</p>
+  <h1>Happy 19th Birthday, Shivi! ❤️</h1>
+  <div class="card">
+    <video controls playsinline>
+      <source src="Cut cake.mp4">
+    </video>
+    <p>Today is all about you, my rabbit. 💋</p>
+  </div>
+  <button class="main" onclick="goTo('letter')">Open your surprise ❤️</button>
 </section>
 
+<!-- SCENE 2: LETTER -->
+<section class="scene" id="letter">
+  <h1 class="scene-title">A letter for my bunny 💌</h1>
+  <p>Tap the envelope to open it...</p>
+  <div class="envelope" id="envelope" onclick="openLetter()"></div>
 
-<!-- 2. MEMORIES ONLY -->
+  <div class="letter-paper" id="letterPaper">
+    <h2 style="color:#e72c61;text-align:center">To my Shivi ❤️</h2>
 
-<section class="scene" id="s2">
+    <p>
+      We have completed 4 months of celebrating our love..everyday and every moment i feel loved because of you..You are not only my boyfriend...but also a great friend who supports me whenever it is needed..you have never left me alone..whenever there was a problem i knew that if no one is there on my side...my shivi will be there for me always...you have gained my trust love and respect...and it is increasing day by day..Oyy ye sab gpt se nhi likhaa rhi haa😛...
+    </p>
 
-<h1>OUR LITTLE WORLD ❤️</h1>
+    <p>
+      Aap ne har baar mera saath diyaa hai...koi bhi decision lu you always agreed with me..you have loved me so much that no one else could...I thank god everyday that he has blessed me with such a kind hearted person...i love you to the core of my heart...i promise that i will never leave you my rabbit..the journey is 7 years long..but i will not leave your hand too..you mean everything to me
+    </p>
 
-<p>Every memory with you is my favourite memory.</p>
+    <p>
+      You are not just a good boyfriend but also a great friend a great son and a great brother...you have changed my perspective about boys...you are the only boy that eisha ever loved and will love till her death...
+    </p>
 
-<video class="media" controls playsinline preload="metadata">
-<source src="Eisha shivi love.mp4" type="video/mp4">
-</video>
+    <p>
+      You are the onlyy boy with whom i felt this comfortable with...even while sharing that photos i was not scared that you will use them...cause i trust you..and i know you would not break it...I feel so safe with you..and every girl does...even after knowing abt my past you never judged me...and even after becoming my bf...you let me live my life my own way..i am really thankful to you for all this...you are my safe place..you are my good luck charm you are my everything shivi...i love you so so so so so muchh...❤️
+    </p>
 
-<p>Little moments, endless love. 💋</p>
+    <p>
+      In future i want everything to stay the same...and i won't change your bagoo will remain yours forever..if u fail i am there...if u pass i am there...if u have nothing i am there...if u have everything i am there...whatever the situation may be...i will be always there for you..cause I LOVE YOU and i will always LOVE YOU mister shivam my bunny Ummmmmahhhh love you so so so much...once again happy birthday my baby 💋💋💋❤️❤️❤️❤️
+    </p>
+    <p style="text-align:center;font-family:Pacifico;color:#e72c61;font-size:1.5rem">
+      Forever yours ❤️
+    </p>
+  </div>
 
-<p class="small">
-A thousand memories, and still a thousand more to make. ❤️
-</p>
-
-<button onclick="go(3,'Sab Tera Shraddha Kapoor Armaan Malik.mp3','Sab Tera ❤️')">
-OPEN MY LETTER 💌
-</button>
-
+  <button class="main" onclick="goTo('memories')">Continue to our memories 💗</button>
 </section>
 
-
-<!-- 3. LETTER -->
-
-<section class="scene" id="s3">
-
-<h1>A LETTER FOR YOU 💌</h1>
-
-<p>Something from my heart, just for you.</p>
-
-<div class="envelope-wrap">
-
-<div class="envelope" id="envelope" onclick="openLetter()">
-
-<div class="flap"></div>
-
-<div class="seal">❤️</div>
-
-</div>
-
-</div>
-
-<button id="openLetterBtn" onclick="openLetter()">
-OPEN YOUR LETTER 💋
-</button>
-
-<article class="letter-paper" id="letterPaper">
-
-<h2>To my Shivi, ❤️</h2>
-
-<p>
-We have completed 4 months of celebrating our love..everyday and every moment i feel loved because of you..You are not only my boyfriend...but also a great friend who supports me whenever it is needed..you have never left me alone..whenever there was a problem i knew that if no one is there on my side...my shivi will be there for me always...you have gained my trust love and respect...and it is increasing day by day..Oyy ye sab gpt se nhi likhaa rhi haa😛...
-</p>
-
-<p>
-Aap ne har baar mera saath diyaa hai...koi bhi decision lu you always agreed with me..you have loved me so much that no one else could...I thank god everyday that he has blessed me with such a kind hearted person...i love you to the core of my heart...i promise that i will never leave you my rabbit..the journey is 7 years long..but i will not leave your hand too..you mean everything to me
-</p>
-
-<p>
-You are not just a good boyfriend but also a great friend a great son and a great brother...you have changed my perspective about boys...you are the only boy that eisha ever loved and will love till her death...
-</p>
-
-<p>
-You are the onlyy boy with whom i felt this comfortable with...even while sharing that photos i was not scared that you will use them...cause i trust you..and i know you would not break it...I feel so safe with you..and every girl does...even after knowing abt my past you never judged me...and even after becoming my bf...you let me live my life my own way..i am really thankful to you for all this...you are my safe place..you are my good luck charm you are my everything shivi...i love you so so so so so muchh...❤️
-</p>
-
-<p>
-In future i want everything to stay the same...and i won't change your bagoo will remain yours forever..if u fail i am there...if u pass i am there...if u have nothing i am there...if u have everything i am there...whatever the situation may be...i will be always there for you..cause I LOVE YOU and i will always LOVE YOU mister shivam my bunny Ummmmmahhhh love you so so so much...once again happy birthday my baby 💋💋💋❤️❤️❤️❤️
-</p>
-
-<p style="text-align:center;color:#b00048;font-size:22px">
-Forever yours,<br>
-<b>Your Eishiyaa ❤️</b>
-</p>
-
-</article>
-
-<button id="letterNext" class="hidden"
-onclick="go(4,'KAUN TUJHE PALAK MUCHHAL AMAAL MALLIK.mp3','Kaun Tujhe 💗')">
-19 REASONS WHY I LOVE YOU 💗
-</button>
-
+<!-- SCENE 3: MEMORIES -->
+<section class="scene" id="memories">
+  <h1>Our little memories 📸</h1>
+  <div class="card">
+    <video controls playsinline>
+      <source src="Eisha shivi love.mp4">
+    </video>
+    <p>Every little moment with you is special. ❤️</p>
+  </div>
+  <button class="main" onclick="setSong('I Love You Pritam, Ash King Clinton Cerejo (1).m4a')">
+    Play I Love You 🎵
+  </button>
+  <button class="main" onclick="goTo('reasons')">Next surprise 🫙</button>
 </section>
 
+<!-- SCENE 4: 19 REASONS -->
+<section class="scene" id="reasons">
+  <h1>19 reasons why I love you ❤️</h1>
+  <p class="glow">On your 19th birthday here are 19 reasons whyy i love you my rabbit</p>
 
-<!-- 4. 19 REASONS JAR -->
+  <button class="main" onclick="setSong('Aankhon Se Batana.m4a.mp4')">
+    Play Aankhon Se Batana 🎵
+  </button>
 
-<section class="scene" id="s4">
+  <div class="jar" id="jar">💌💌💌</div>
+  <p>Shake the jar and pick your chits one by one!</p>
+  <button class="main" id="pickButton" onclick="pickReason()">Pick a chit 💌</button>
 
-<h1>19 REASONS ❤️</h1>
+  <div class="chit" id="chit"></div>
+  <p id="reasonCount" class="glow">0 / 19 opened</p>
 
-<h2>WHY I LOVE YOU</h2>
-
-<p>
-On your 19th birthday, here are 19 reasons why I love you, my rabbit. 💌
-</p>
-
-<div class="jar-area">
-
-<div class="jar" id="jar">
-
-<span class="jar-chit" style="left:20px;top:40px">💌</span>
-<span class="jar-chit" style="left:70px;top:35px">💗</span>
-<span class="jar-chit" style="left:125px;top:50px">💌</span>
-<span class="jar-chit" style="left:175px;top:38px">💕</span>
-<span class="jar-chit" style="left:35px;top:105px">💌</span>
-<span class="jar-chit" style="left:90px;top:115px">💗</span>
-<span class="jar-chit" style="left:155px;top:105px">💌</span>
-<span class="jar-chit" style="left:55px;top:185px">💕</span>
-<span class="jar-chit" style="left:125px;top:185px">💌</span>
-
-<div class="jar-label">
-19 LITTLE LOVE NOTES ❤️
-</div>
-
-</div>
-
-</div>
-
-<button id="pickBtn" onclick="pickReason()">
-MIX THE JAR & PICK A CHIT 💌
-</button>
-
-<div class="drawn-chit" id="drawnChit">
-💌
-</div>
-
-<div class="reason-paper" id="reasonPaper">
-Your love note will appear here ❤️
-</div>
-
-<p class="small" id="counter">
-0 / 19 NOTES OPENED
-</p>
-
-<button onclick="go(5,'Arz kya hai.mp4','Arz Kya Hai 🎶')">
-NEXT: ARZ KYA HAI 🤭
-</button>
-
+  <button class="main" id="reasonNext" style="display:none" onclick="goTo('shayari')">
+    Continue 💙
+  </button>
 </section>
 
+<!-- SCENE 5: SHAYARI -->
+<section class="scene" id="shayari">
+  <h1>Arz Kya Hai... 🌙</h1>
+  <div class="card">
+    <p id="shayariText">
+      Arz kya hai<br>
+      Itnaa haseen chehra hai aapka<br>
+      Ki itna haseen chehra hai aapka<br>
+      Dil mera deewana hai aapka<br>
+      Log kehte hai aapko chaand ka tukda<br>
+      But humare liye chaand bhi tukda hai aapka🤭💋❤️
+    </p>
+  </div>
 
-<!-- 5. ARZ KYA HAI: AUDIO ONLY -->
+  <p>Listen to this one too... 🎶</p>
+  <button class="main" onclick="setSong('Arz kya hai.mp4')">
+    Play Arz Kya Hai audio 🎵
+  </button>
+  <p class="small-note">Audio only — the video itself will not be shown.</p>
 
-<section class="scene" id="s5">
-
-<h1>ARZ KYA HAI... 🤭</h1>
-
-<div class="shayari">
-
-<h2>Arz kya hai</h2>
-
-<p>
-Itnaa haseen chehra hai aapka
-<br>
-Ki itna haseen chehra hai aapka
-<br>
-Dil mera deewana hai aapka
-<br>
-Log kehte hai aapko chaand ka tukda
-<br>
-But humare liye chaand bhi tukda hai aapka 🤭💋❤️
-</p>
-
-</div>
-
-<p>Just listen to this for me, my love. 🎶</p>
-
-<p class="small">
-🎧 Arz Kya Hai - Your special audio
-</p>
-
-<button onclick="playCurrentSong()">
-PLAY ARZ KYA HAI ❤️
-</button>
-
-<button onclick="go(6,'Aankhon Se Batana.m4a.mp4','Aankhon Se Batana 💙')">
-ONE QUESTION FOR YOU 💍
-</button>
-
+  <button class="main" onclick="goTo('proposal')">One more question... 💍</button>
 </section>
 
-
-<!-- 6. PROPOSAL -->
-
-<section class="scene" id="s6">
-
-<h1>WILL YOU MARRY ME? 💍</h1>
-
-<p>One day, one lifetime, endless memories... 🕷️❤️</p>
-
-<video class="media" controls playsinline preload="metadata">
-<source src="Proposal.mp4" type="video/mp4">
-</video>
-
-<p>Will you choose your Eishiyaa forever? ❤️</p>
-
-<div>
-
-<button onclick="acceptProposal()">
-YES, MY LOVE! 💍
-</button>
-
-<button onclick="document.getElementById('proposalReply').textContent='Take your time, my love. ❤️'">
-LET ME THINK 🥺
-</button>
-
-</div>
-
-<p id="proposalReply" class="small"></p>
-
+<!-- SCENE 6: PROPOSAL -->
+<section class="scene" id="proposal">
+  <h1>One question, my love... 💍</h1>
+  <button class="main" onclick="setSong('KAUN TUJHE PALAK MUCHHAL AMAAL MALLIK.mp3')">
+    Play Kaun Tujhe 🎵
+  </button>
+  <div class="ring"></div>
+  <div class="card">
+    <video controls playsinline>
+      <source src="Proposal.mp4">
+    </video>
+    <h2>WILL YOU MARRY ME? ❤️</h2>
+    <button class="main yes-button" onclick="sayYes()">YESSS ❤️</button>
+    <button class="main no-button" onclick="sayNo()">Let me think 🤭</button>
+    <p id="proposalReply"></p>
+  </div>
 </section>
 
-
-<!-- 7. HUG AFTER YES -->
-
-<section class="scene" id="s7">
-
-<h1>COME HERE, MY LOVE 🥹❤️</h1>
-
-<p>You said YES!! Here's your hug. 💋</p>
-
-<video class="media" id="hugVideo" controls playsinline preload="metadata">
-<source src="Hug.mp4" type="video/mp4">
-</video>
-
-<button onclick="go(8)">
-YOUR BIRTHDAY GIFT 🎁
-</button>
-
+<!-- SCENE 7: HUG AFTER YES -->
+<section class="scene" id="hug">
+  <h1>YOU SAID YESSS! ❤️</h1>
+  <p>Come here, my bunny! 🥹</p>
+  <div class="card">
+    <video id="hugVideo" controls playsinline>
+      <source src="Hug.mp4">
+    </video>
+  </div>
+  <button class="main" onclick="goTo('pajama')">I have another gift 🎁</button>
 </section>
 
-
-<!-- 8. GIFT -->
-
-<section class="scene" id="s8">
-
-<h1>YOUR SPECIAL BIRTHDAY GIFT 🎁</h1>
-
-<img class="media" src="Pink pajama.png" alt="Pink pajama gift">
-
-<div class="letter-paper show" style="max-height:none;text-align:center">
-
-<p>Your pink pajama worn by your Eishiyaa 💗</p>
-
-<p>A little surprise from your Bagoo! 😛💋</p>
-
-</div>
-
-<button onclick="go(9)">
-ONE LAST SURPRISE ❤️
-</button>
-
+<!-- SCENE 8: PAJAMA GIFT -->
+<section class="scene" id="pajama">
+  <h1>A little gift for you 🎁</h1>
+  <button class="main" onclick="setSong('KAUN TUJHE PALAK MUCHHAL AMAAL MALLIK.mp3')">
+    Play Kaun Tujhe 🎵
+  </button>
+  <div class="card">
+    <img src="Pink pajama.png" alt="Pink pajama gift">
+    <h2>Your cute little gift! 💗</h2>
+    <p>Imagine us matching in these hehe 🤭</p>
+  </div>
+  <button class="main" onclick="goTo('final')">Last surprise 🕸️</button>
 </section>
 
-
-<!-- 9. FINAL -->
-
-<section class="scene" id="s9">
-
-<h1>MY SPIDERMAN 🕷️❤️</h1>
-
-<button class="ring" onclick="revealFinal()">
-❤️
-</button>
-
-<p>Tap the beating heart, my love!</p>
-
-<div id="finalMessage" class="letter-paper hidden" style="text-align:center">
-
-<img class="media" src="Gwen.png" alt="Gwen">
-
-<h2>I LOVE YOU MY BABY ❤️</h2>
-
-<p>
-Will u be my spiderman for the rest of my life...you mean everything to me baby...please always stay happy your eishiyaa loves you
-</p>
-
-<p style="font-size:30px">
-💋❤️🕷️💙
-</p>
-
-</div>
-
-<p class="small">Forever your Eishiyaa. ❤️</p>
-
+<!-- SCENE 9: SPIDER-MAN AND GWEN ENDING -->
+<section class="scene" id="final">
+  <h1>My Spider-Man 🕸️❤️</h1>
+  <div class="card">
+    <img src="Gwen.png" alt="Gwen">
+    <p>Tap the heart, my love...</p>
+    <div class="final-heart" onclick="revealFinal()">❤️</div>
+    <div id="finalMessage">
+      Will u be my spiderman for the rest of my life...you mean everything to me baby...please always stay happy your eishiyaa loves you
+      <h2>LOVE YOU FOREVER 💋❤️</h2>
+    </div>
+  </div>
+  <p class="glow">Your Eishiyaa ❤️</p>
 </section>
-
 
 <script>
+const scenes = document.querySelectorAll('.scene');
+const music = document.getElementById('music');
 
-/* MUSIC PLAYER */
+function goTo(id) {
+  scenes.forEach(scene => scene.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  if (id === 'letter') {
+    setSong('Sab Tera Shraddha Kapoor Armaan Malik.mp3');
+  }
+}
 
-const music=document.getElementById('music');
-const trackName=document.getElementById('trackName');
-
-let currentSong='';
-
-function playSong(file,name){
-
- if(!file)return;
-
- currentSong=file;
-
- music.pause();
-
- music.src=file;
-
- music.load();
-
- trackName.textContent='🎵 NOW PLAYING: '+name;
-
- const result=music.play();
-
- if(result && result.catch){
-  result.catch(()=>{
-   trackName.textContent='🎵 TAP PLAY TO START: '+name;
+function setSong(filename) {
+  const newSource = filename;
+  if (!music.src.endsWith(encodeURIComponent(newSource)) &&
+      !music.src.endsWith(newSource)) {
+    music.pause();
+    music.src = newSource;
+    music.load();
+  }
+  music.play().catch(() => {
+    alert('Tap the play button on the audio player to start the song.');
   });
- }
-
 }
 
-function playCurrentSong(){
-
- if(currentSong){
-  music.play().catch(()=>{
-   trackName.textContent='🎵 Please press play on the audio player';
-  });
- }
-
+function openLetter() {
+  document.getElementById('envelope').classList.add('open');
+  setTimeout(() => {
+    document.getElementById('letterPaper').classList.add('show');
+  }, 700);
 }
 
-
-/* NAVIGATION */
-
-function go(number,file,name){
-
- // Pause all videos from the previous scene
- document.querySelectorAll('video').forEach(video=>{
-  video.pause();
- });
-
- document.querySelectorAll('.scene').forEach(scene=>{
-  scene.classList.remove('active');
- });
-
- const target=document.getElementById('s'+number);
-
- target.classList.add('active');
-
- target.scrollTop=0;
-
- if(file){
-  playSong(file,name);
- }
-
- if(number===6 || number===7 || number===8 || number===9){
-  music.pause();
- }
-
-}
-
-
-/* OPEN LETTER */
-
-function openLetter(){
-
- const envelope=document.getElementById('envelope');
-
- envelope.classList.add('open');
-
- document.getElementById('letterPaper').classList.add('show');
-
- document.getElementById('openLetterBtn').classList.add('hidden');
-
- document.getElementById('letterNext').classList.remove('hidden');
-
-}
-
-
-/* THE EXACT 19 REASONS - UNCHANGED */
-
-const reasons=[
-
-"Because you are kind hearted",
-
-"Because you always make everyone around you feel loved",
-
-"Because you respect women",
-
-"Beacuse you have a great personality",
-
-"Beacuse you respect your elders",
-
-"Because you care about everyone",
-
-"Beacuse you remember my period date (my fav lmao)",
-
-"Beacuse you are handsome(even if you were not i would have loved you hehe)",
-
-"You have a great cute smile awwwwww",
-
-"You get shy around me khikhikhi",
-
-"Beacuse everyone feels safe around you",
-
-"Beacuse you have a sexy voice",
-
-"Because you accept your mistakes",
-
-"Because you don't have male ego",
-
-"Because you care about your future",
-
-"Because you help people in trouble",
-
-"Because you make me laugh when i am sad",
-
-"Because you have a heart of gold",
-
-"Because you are my everything"
-
+const reasons = [
+  "Because you are kind hearted",
+  "Because you always make everyone around you feel loved",
+  "Because you respect women",
+  "Beacuse you have a great personality ",
+  "Beacuse you respect your elders",
+  "Because you care about everyone",
+  "Beacuse you remember my period date (my fav lmao)",
+  "Beacuse you are handsome(even if you were not i would have loved you hehe)",
+  "You have a great cute smile awwwwww",
+  "You get shy around me khikhikhi",
+  "Beacuse everyone feels safe around you",
+  "Beacuse you have a sexy voice",
+  "Because you accept your mistakes",
+  "Because you don't have male ego",
+  "Because you care about your future",
+  "Because you help people in trouble",
+  "Because you make me laugh when i am sad",
+  "Because you have a heart of gold",
+  "Because you are my everything"
 ];
 
-let openedReasons=[];
+let remainingReasons = [...reasons];
+let openedReasons = 0;
 
-let isPicking=false;
+function pickReason() {
+  if (remainingReasons.length === 0) return;
 
+  const jar = document.getElementById('jar');
+  const chit = document.getElementById('chit');
+  const button = document.getElementById('pickButton');
 
-/* MIX JAR AND PICK ONE CHIT */
+  jar.animate([
+    { transform: 'rotate(0deg) scale(1)' },
+    { transform: 'rotate(12deg) scale(1.08)' },
+    { transform: 'rotate(-12deg) scale(1.08)' },
+    { transform: 'rotate(0deg) scale(1)' }
+  ], { duration: 650 });
 
-function pickReason(){
+  button.disabled = true;
+  button.textContent = 'Picking your chit...';
 
- if(isPicking)return;
+  setTimeout(() => {
+    const randomIndex = Math.floor(Math.random() * remainingReasons.length);
+    const reason = remainingReasons.splice(randomIndex, 1)[0];
 
- const jar=document.getElementById('jar');
+    chit.classList.remove('show');
+    void chit.offsetWidth;
+    chit.textContent = reason;
+    chit.classList.add('show');
 
- const button=document.getElementById('pickBtn');
+    openedReasons++;
+    document.getElementById('reasonCount').textContent =
+      openedReasons + ' / 19 opened';
 
- const chit=document.getElementById('drawnChit');
+    button.disabled = false;
 
- const paper=document.getElementById('reasonPaper');
-
- if(openedReasons.length===19){
-
-  paper.classList.add('show');
-
-  paper.textContent=
-  'YOU HAVE ALL 19 REASONS NOW! BUT I HAVE A MILLION MORE. I LOVE YOU MY RABBIT ❤️';
-
-  return;
-
- }
-
- isPicking=true;
-
- button.disabled=true;
-
- button.textContent='MIXING YOUR LOVE NOTES... 💗';
-
- paper.classList.remove('show');
-
- chit.classList.remove('show');
-
- jar.classList.remove('mixing');
-
- // Restart animation
- void jar.offsetWidth;
-
- jar.classList.add('mixing');
-
- setTimeout(()=>{
-
-  let remaining=reasons
-   .map((reason,index)=>index)
-   .filter(index=>!openedReasons.includes(index));
-
-  let chosen=remaining[
-   Math.floor(Math.random()*remaining.length)
-  ];
-
-  openedReasons.push(chosen);
-
-  // A chit comes out of the jar
-  chit.classList.add('show');
-
-  button.textContent='OPEN MY CHIT 💌';
-
-  button.disabled=false;
-
-  // Clicking again unfolds the selected chit
-  button.onclick=()=>openPickedReason(chosen);
-
-  document.getElementById('counter').textContent=
-  openedReasons.length+' / 19 NOTES PICKED';
-
-  isPicking=false;
-
- },1700);
-
+    if (remainingReasons.length === 0) {
+      button.textContent = 'All 19 reasons opened! ❤️';
+      button.disabled = true;
+      document.getElementById('reasonNext').style.display = 'inline-block';
+    } else {
+      button.textContent = 'Pick another chit 💌';
+    }
+  }, 700);
 }
 
+function sayYes() {
+  document.getElementById('proposalReply').textContent =
+    'BEST ANSWER EVER!!! ❤️🥹';
+  music.pause();
+  goTo('hug');
 
-/* OPEN THE DRAWN CHIT */
-
-function openPickedReason(index){
-
- const paper=document.getElementById('reasonPaper');
-
- const chit=document.getElementById('drawnChit');
-
- paper.classList.remove('show');
-
- void paper.offsetWidth;
-
- paper.textContent=reasons[index];
-
- paper.classList.add('show');
-
- chit.classList.remove('show');
-
- const button=document.getElementById('pickBtn');
-
- if(openedReasons.length===19){
-
-  button.textContent='ALL 19 NOTES OPENED ❤️';
-
-  button.onclick=()=>{
-
-   paper.textContent=
-   'YOU HAVE ALL 19 REASONS NOW... BUT I HAVE A MILLION MORE! I LOVE YOU SHIVI ❤️';
-
-   paper.classList.add('show');
-
-  };
-
- }else{
-
-  button.textContent='PICK ANOTHER CHIT 💌';
-
-  button.onclick=pickReason;
-
- }
-
+  const hugVideo = document.getElementById('hugVideo');
+  hugVideo.currentTime = 0;
+  hugVideo.play().catch(() => {
+    // If autoplay is blocked, the visible video controls can start it.
+  });
 }
 
-
-/* PROPOSAL YES */
-
-function acceptProposal(){
-
- go(7);
-
- const hug=document.getElementById('hugVideo');
-
- hug.currentTime=0;
-
- hug.play().catch(()=>{
-  // The video controls remain available if autoplay is blocked.
- });
-
+function sayNo() {
+  document.getElementById('proposalReply').textContent =
+    'Hehe take your time, but I am still choosing you! 🤭❤️';
 }
 
-
-/* FINAL REVEAL */
-
-function revealFinal(){
-
- document.getElementById('finalMessage')
- .classList.remove('hidden');
-
+function revealFinal() {
+  document.getElementById('finalMessage').classList.add('show');
 }
 
-
-/* FLOATING HEARTS AND KISSES */
-
-function createHeart(){
-
- const heart=document.createElement('span');
-
- heart.className='heart';
-
- heart.textContent=[
-  '❤️','💙','💋','💕','🕷️','💗'
- ][Math.floor(Math.random()*6)];
-
- heart.style.setProperty('--x',Math.random()*100+'vw');
-
- heart.style.setProperty('--size',(17+Math.random()*27)+'px');
-
- heart.style.setProperty('--duration',(5+Math.random()*5)+'s');
-
- document.body.appendChild(heart);
-
- setTimeout(()=>heart.remove(),11000);
-
+function makeHeart() {
+  const heart = document.createElement('div');
+  const choices = ['❤️', '💙', '💋', '💕', '🕸️'];
+  heart.className = 'heart';
+  heart.textContent = choices[Math.floor(Math.random() * choices.length)];
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (5 + Math.random() * 4) + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 9000);
 }
 
-setInterval(createHeart,450);
+setInterval(makeHeart, 650);
 
+// Start the letter's song when the letter screen is opened.
 </script>
-
 </body>
 </html>
