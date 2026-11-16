@@ -260,7 +260,7 @@ audio{display:none}
     Ki itna haseen chehra hai aapka<br>
     Dil mera deewana hai aapka<br>
     Log kehte hai aapko chaand ka tukda<br>
-    But humare liye chaand bhi tukda hai aapka🤭💋❤️
+    Par humare liye chaand bhi tukda hai aapka🤭💋❤️
   </div>
   <button onclick="goTo('proposal')">One more question... 💍</button>
 </section>
@@ -324,13 +324,24 @@ audio{display:none}
 const music = document.getElementById('music');
 
 const songs = {
-  letter: 'Sab Tera Shraddha Kapoor Armaan Malik.mp3',
-  memories: 'I Love You Pritam, Ash King Clinton Cerejo (1).m4a',
+  letter: 'Sab Tera   Shraddha Kapoor   Armaan Malik.mp3',
+  memories: 'I Love You   Pritam, Ash King   Clinton Cerejo (1).m4a',
   reasons: 'Aankhon Se Batana.m4a.mp4',
   shayari: 'Arz kya hai.mp4',
-  proposal: 'KAUN TUJHE PALAK MUCHHAL AMAAL MALLIK.mp3',
-  pajama: 'KAUN TUJHE PALAK MUCHHAL AMAAL MALLIK.mp3'
+  proposal: 'KAUN TUJHE   PALAK MUCHHAL   AMAAL MALLIK.mp3',
+  pajama: 'KAUN TUJHE   PALAK MUCHHAL   AMAAL MALLIK.mp3'
 };
+
+function stopAllMedia() {
+  music.pause();
+  music.removeAttribute('src');
+  music.load();
+
+  document.querySelectorAll('.scene video').forEach(video => {
+    video.pause();
+    video.currentTime = 0;
+  });
+}
 
 function playSectionSong(section) {
   const file = songs[section];
@@ -344,18 +355,16 @@ function playSectionSong(section) {
   music.src = file;
   music.load();
 
-  // This is called directly by the section navigation tap.
   const attempt = music.play();
   if (attempt && attempt.catch) {
     attempt.catch(() => {
-      // No popup or player button. The browser may block autoplay,
-      // or the filename/format may need checking.
+      // Playback can be blocked by browser settings or an unsupported file format.
     });
   }
 }
 
 function goTo(id) {
-  music.pause();
+  stopAllMedia();
 
   document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -418,7 +427,6 @@ function pickReason() {
   void jar.offsetWidth;
   jar.classList.add('shake');
 
-  // Chits visibly tumble inside the glass jar.
   document.querySelectorAll('.chit-inside').forEach((paper, i) => {
     paper.animate([
       {transform:'translate(0,0) rotate(0deg)'},
